@@ -27,10 +27,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 col-xl-9">
-                        <article class="front pb-4 text-center">
-                            <header class="pt-1">
-                                <h1>{{ the_title() }}</h1>
-                            </header>
+                        <article class="front text-center">
                             
                             {{ the_content() }}
 

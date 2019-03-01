@@ -23,7 +23,7 @@
             </div>
             
             <div class="flex-grow-1">
-                <div class="contact-nav py-2">
+                <div class="contact-nav">
                     <a class="mail top-button" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-md-inline-block text-primary">{{ get_field('email', 'option') }}</span></a>
                     <a class="call top-button" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-md-inline-block text-primary">{{ get_field('phone', 'option') }}</span></a>
                     <button v-on:click="toggleMenu" class="d-xl-none btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#mobilemenu" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">

@@ -4,7 +4,7 @@ Tags: gutenberg, block, blocks, block editor, gutenberg blocks, page builder, ed
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 5.3
-Stable tag: 1.13.1
+Stable tag: 1.13.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,6 +118,17 @@ Nope. Stackable only works with Gutenberg, the new WordPress editor.
 You will have to redo all your blocks
 
 == Changelog ==
+
+= 1.13.2 =
+* New: Added modal slider for Premium "Learn More" buttons
+* New: Scripts & style loading optimization: CSS files are now preloaded / prefetched, JS files are now deferred
+* New: Added Contact Us & Support Forum in admin menu
+* Fixed: Divider Elementor margin conflict
+* Fixed: Feature Block content doesn't force center on mobile
+* Fixed: Duplicated notifications can show up.
+* Fixed: Blog Posts block List design shows incorrectly in the editor.
+* Fixed: Click-holding on an icon doesn't select the icon
+* Fixed: Remove Icon list bullets, compatibility for Genesis theme
 
 = 1.13.1 =
 * New: Added news section in the welcome screen

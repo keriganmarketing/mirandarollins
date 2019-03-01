@@ -1,6 +1,6 @@
 <footer class="sticky-footer bg-dark py-4">
     <div class="container text-center">
-        <h4>Contact Me</h4>
+        <h2>Contact Me</h2>
         <p class="m-0"><a href="tel:{{ get_field('phone', 'option') }}">{{ get_field('phone', 'option') }}</a></p>
         <p><a href="mailto:{{ get_field('email', 'option') }}">{{ get_field('email', 'option') }}</a></p>
         <social-icons :size="37" :margin=".25" class="d-flex social-icons justify-content-center mb-4" ></social-icons>
