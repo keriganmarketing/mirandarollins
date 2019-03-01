@@ -388,12 +388,9 @@ main {
 }
 
 .section-title {
-    padding: 3rem 1rem 1rem;
+    padding: 2rem 1rem 1rem;
     @media (min-width: 567px){
-        padding: 4rem 1rem 0;
-    }
-    @media (min-width: 768px){
-        padding: 5rem 1rem 1rem;
+        padding: 3rem 1rem 0;
     }
 
     h2 {
