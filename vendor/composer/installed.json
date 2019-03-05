@@ -494,8 +494,8 @@
     },
     {
         "name": "illuminate/config",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/config.git",
@@ -540,17 +540,17 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
-            "reference": "2b390ea16656162a7c1a5f2ad547b4de917324bf"
+            "reference": "b984960d2634c6be97b0dd368a8953e8c4e06ec7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/container/zipball/2b390ea16656162a7c1a5f2ad547b4de917324bf",
-            "reference": "2b390ea16656162a7c1a5f2ad547b4de917324bf",
+            "url": "https://api.github.com/repos/illuminate/container/zipball/b984960d2634c6be97b0dd368a8953e8c4e06ec7",
+            "reference": "b984960d2634c6be97b0dd368a8953e8c4e06ec7",
             "shasum": ""
         },
         "require": {
@@ -559,7 +559,7 @@
             "php": "^7.1.3",
             "psr/container": "^1.0"
         },
-        "time": "2019-02-23T13:57:12+00:00",
+        "time": "2019-03-03T15:13:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -587,8 +587,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -633,8 +633,8 @@
     },
     {
         "name": "illuminate/events",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/events.git",
@@ -680,8 +680,8 @@
     },
     {
         "name": "illuminate/filesystem",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/filesystem.git",
@@ -734,17 +734,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "013cfab5d44c530b56d70cc9ccb891c8b25ebbce"
+            "reference": "0f0291d1bc2f036af3fceb8e46900b58812533c4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/013cfab5d44c530b56d70cc9ccb891c8b25ebbce",
-            "reference": "013cfab5d44c530b56d70cc9ccb891c8b25ebbce",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/0f0291d1bc2f036af3fceb8e46900b58812533c4",
+            "reference": "0f0291d1bc2f036af3fceb8e46900b58812533c4",
             "shasum": ""
         },
         "require": {
@@ -766,7 +766,7 @@
             "symfony/var-dumper": "Required to use the dd function (^4.2).",
             "vlucas/phpdotenv": "Required to use the env helper (^3.3)."
         },
-        "time": "2019-02-27T14:00:44+00:00",
+        "time": "2019-03-05T13:38:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -797,8 +797,8 @@
     },
     {
         "name": "illuminate/view",
-        "version": "v5.8.2",
-        "version_normalized": "5.8.2.0",
+        "version": "v5.8.3",
+        "version_normalized": "5.8.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/view.git",
@@ -1017,24 +1017,24 @@
     },
     {
         "name": "kerigansolutions/kma-rafgc-realtor",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "1.1",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kerigansolutions/kma-rafgc-realtor.git",
-            "reference": "392f435c84371408281c126799e7b9b2aafe852f"
+            "reference": "292bb283bf14d7039e9cf819ee0c3154d4093953"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kerigansolutions/kma-rafgc-realtor/zipball/392f435c84371408281c126799e7b9b2aafe852f",
-            "reference": "392f435c84371408281c126799e7b9b2aafe852f",
+            "url": "https://api.github.com/repos/kerigansolutions/kma-rafgc-realtor/zipball/292bb283bf14d7039e9cf819ee0c3154d4093953",
+            "reference": "292bb283bf14d7039e9cf819ee0c3154d4093953",
             "shasum": ""
         },
         "require": {
             "guzzlehttp/guzzle": "^6.3",
             "nesbot/carbon": "^1.22"
         },
-        "time": "2019-03-04T14:31:10+00:00",
+        "time": "2019-03-05T19:01:43+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

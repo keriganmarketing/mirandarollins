@@ -15,11 +15,6 @@ class Listing extends Mothership
         add_filter('the_posts',array($this,'createTemplate'));
     }
 
-    public function set($mlsNumber)
-    {
-        $this->mlsNumber = $mlsNumber;
-    }
-
     public function get()
     {
         if($this->getMlsNumber()){
