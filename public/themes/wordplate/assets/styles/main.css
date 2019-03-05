@@ -13576,7 +13576,7 @@ body #app .site-wrapper.full-height {
 #app .top {
   transition: all .5s linear;
   position: relative;
-  z-index: 6;
+  z-index: 10;
   position: fixed;
   width: 100%;
   background-color: #fff;
