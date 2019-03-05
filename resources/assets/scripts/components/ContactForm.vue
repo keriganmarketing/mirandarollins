@@ -46,15 +46,22 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" @click.prevent="formSubmitted">Send Message &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                    <invisible-recaptcha sitekey="6LcirZUUAAAAAP0438I86dmC5E4Ch-6nlo41_9RT" :callback="formSubmitted"
+                        class="btn btn-primary" type="submit" id="contact-form-submit-button" >
+                        Send Message &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </invisible-recaptcha>
                 </div>
             </div>
         </form>
     </div>
 </template>
 <script>
+import InvisibleRecaptcha from 'vue-invisible-recaptcha';
 import ContactForm from '../models/contact-form';
     export default {
+        components: {
+            'invisible-recaptcha': InvisibleRecaptcha
+        },
         props: ['listing'],
         data () {
             return {

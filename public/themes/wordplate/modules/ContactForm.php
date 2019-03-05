@@ -52,6 +52,7 @@ class ContactForm
                 ->setSubject('New Lead From Website')
                 ->setPrimaryColor('#de0a29')
                 ->setSecondaryColor('#59332a')
+                // ->to(get_field('email', 'option'));
                 ->to('web@kerigan.com');
 
         $mail = new KMAMail($message);

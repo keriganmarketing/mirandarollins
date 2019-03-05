@@ -5466,12 +5466,143 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		sitekey: {
+			type: String,
+			required: true
+		},
+
+		badge: {
+			type: String,
+			required: false,
+			default: 'bottomright'
+		},
+
+		theme: {
+			type: String,
+			required: false,
+			default: 'dark'
+		},
+
+		validate: {
+			type: Function,
+			required: false
+		},
+
+		callback: {
+			type: Function,
+			required: true
+		},
+
+		disabled: {
+			type: Boolean,
+			required: false,
+			default: false
+		},
+
+		id: {
+			type: String,
+			required: false
+		},
+
+		reference: {
+			type: String,
+			required: false
+		},
+
+		type: {
+			type: String,
+			required: false,
+			default: 'submit'
+		}
+	},
+
+	data: function data() {
+		return {
+			widgetId: false,
+			loaded: false
+		};
+	},
+
+	methods: {
+		render: function render() {
+			var _this = this;
+
+			this.widgetId = grecaptcha.render(this.recaptchaId, {
+				sitekey: this.sitekey,
+				size: 'invisible',
+				badge: this.badge,
+				theme: this.theme,
+				callback: function callback(token) {
+					_this.callback(token);
+					grecaptcha.reset(_this.widgetId);
+				}
+			});
+			this.loaded = true;
+		},
+
+		renderWait: function renderWait() {
+			var self = this;
+			setTimeout(function () {
+				if (typeof grecaptcha !== 'undefined' && grecaptcha.render) self.render();else self.renderWait();
+			}, 200);
+		},
+
+		click: function click() {
+			if (!this.validate || this.validate && this.validate() !== false) grecaptcha.execute();
+		}
+	},
+
+	computed: {
+		computedClass: function computedClass() {
+			var classArray = this.class ? this.class.split(' ') : [];
+
+			if (this.value) {
+				classArray.push('invisible-recaptcha');
+			}
+
+			return classArray;
+		},
+		recaptchaId: function recaptchaId() {
+			return 'vue-invisible-recaptcha-' + this._uid;
+		}
+	},
+
+	mounted: function mounted() {
+		if (typeof grecaptcha === 'undefined') {
+			var script = document.createElement('script');
+			script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
+			script.onload = this.renderWait;
+
+			document.head.appendChild(script);
+		} else this.render();
+	}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/scripts/components/ContactForm.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_contact_form__ = __webpack_require__("./resources/assets/scripts/models/contact-form.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_invisible_recaptcha__ = __webpack_require__("./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_invisible_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_invisible_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_contact_form__ = __webpack_require__("./resources/assets/scripts/models/contact-form.js");
 //
 //
 //
@@ -5526,13 +5657,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'invisible-recaptcha': __WEBPACK_IMPORTED_MODULE_0_vue_invisible_recaptcha___default.a
+    },
     props: ['listing'],
     data: function data() {
         return {
-            form: new __WEBPACK_IMPORTED_MODULE_0__models_contact_form__["a" /* default */]({
+            form: new __WEBPACK_IMPORTED_MODULE_1__models_contact_form__["a" /* default */]({
                 name: '',
                 email: '',
                 phone: '',
@@ -39432,6 +39570,54 @@ exports.callbackify = callbackify;
 
 /***/ }),
 
+/***/ "./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-288342ca\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-288342ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-288342ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/component-normalizer.js":
 /***/ (function(module, exports) {
 
@@ -39608,6 +39794,50 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1109806d", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-288342ca\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./node_modules/vue-invisible-recaptcha/src/InvisibleRecaptcha.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      ref: _vm.reference,
+      class: _vm.computedClass,
+      attrs: {
+        id: _vm.id,
+        type: _vm.type,
+        disabled: !_vm.loaded || _vm.disabled
+      },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.click($event)
+        }
+      }
+    },
+    [
+      _c("div", { attrs: { id: _vm.recaptchaId, "data-size": "invisible" } }),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-288342ca", module.exports)
   }
 }
 
@@ -42003,27 +42233,32 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.formSubmitted($event)
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          [
+            _c(
+              "invisible-recaptcha",
+              {
+                staticClass: "btn btn-primary",
+                attrs: {
+                  sitekey: "6LcirZUUAAAAAP0438I86dmC5E4Ch-6nlo41_9RT",
+                  callback: _vm.formSubmitted,
+                  type: "submit",
+                  id: "contact-form-submit-button"
                 }
-              }
-            },
-            [
-              _vm._v("Send Message   "),
-              _c("i", {
-                staticClass: "fa fa-angle-right",
-                attrs: { "aria-hidden": "true" }
-              })
-            ]
-          )
-        ])
+              },
+              [
+                _vm._v("\n                    Send Message   "),
+                _c("i", {
+                  staticClass: "fa fa-angle-right",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+          ],
+          1
+        )
       ])
     ])
   ])
