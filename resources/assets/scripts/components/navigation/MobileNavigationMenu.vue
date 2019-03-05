@@ -61,7 +61,7 @@
         display: flex;
         height: 100vh;
         width: 100%;
-        z-index: 5;
+        z-index: 9;
         padding: 2rem 2rem 2rem;
         color: #FFF;
         position: fixed;
