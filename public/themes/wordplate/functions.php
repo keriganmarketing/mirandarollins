@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use KeriganSolutions\KMARealtor;
-use Includes\Modules\KMAMail;
 
 require template_path('includes/ThemeControl.php');
 require('post-types/contact_request.php');

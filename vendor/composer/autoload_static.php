@@ -706,6 +706,8 @@ class ComposerStaticInitf5e1c907962da6446c708da6ae2c6ad5
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/illuminate/view/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/illuminate/view/ViewServiceProvider.php',
         'Includes\\Modules\\ContactForm' => __DIR__ . '/../..' . '/public/themes/wordplate/modules/ContactForm.php',
+        'Includes\\Modules\\KMAMail\\KMAMail' => __DIR__ . '/../..' . '/public/themes/wordplate/modules/KMAMail/KMAMail.php',
+        'Includes\\Modules\\KMAMail\\Message' => __DIR__ . '/../..' . '/public/themes/wordplate/modules/KMAMail/Message.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
         'KeriganSolutions\\KMAContactInfo\\ContactInfo' => __DIR__ . '/..' . '/kerigansolutions/kma-contact-info/src/ContactInfo.php',
         'KeriganSolutions\\KMARealtor\\FeaturedListings' => __DIR__ . '/..' . '/kerigansolutions/kma-rafgc-realtor/src/FeaturedListings.php',

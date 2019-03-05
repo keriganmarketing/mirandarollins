@@ -1,5 +1,5 @@
 <?php
-namespace KeriganSolutions\KMAMail;
+namespace Includes\Modules\KMAMail;
 
 class Message
 {

@@ -56,7 +56,7 @@
                     navigation-prev-label='<i class="fa fa-chevron-left text-white" aria-hidden="true"></i>'
                     class="row" 
                     >
-                    @foreach($featuredListings as $listing)
+                    @foreach($featuredListings as $miniListing)
                     <slide class="col-md-6 col-lg-4 col-xl-3">
                     @include('partials.minilisting')
                     </slide>

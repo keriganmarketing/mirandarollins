@@ -111,6 +111,15 @@ function kma_add_contact_metaboxes()
 		'normal',
 		'default'
 	);
+
+	add_meta_box(
+		'listing',
+		'Listing',
+		'contact_listing_metabox',
+		'contact_request',
+		'normal',
+		'default'
+	);
 }
 
 function contact_email_metabox()
@@ -138,6 +147,61 @@ function contact_comments_metabox()
     $comments = get_post_meta($post->ID, 'comments', true);
 	// Output the field
 	echo '<p>'. $comments . '</p>';
+}
+
+function contact_listing_metabox()
+{
+	global $post;
+	// Get the location data if it's already been entered
+    $mlsNum = get_post_meta($post->ID, 'listing', true);
+	// Output the field
+
+	$listing = new KeriganSolutions\KMARealtor\Listing();
+	$listing->set($mlsNum);
+	$listing = $listing->getListing();
+		
+	// echo '<p>'. $listingInfo . '</p>';
+	?>
+	<div class="row">
+		<div class="col-md-6 col-lg-5">
+			<img src="<?php echo $listing->media_objects->data[0]->url; ?>" class="img-fluid" >
+		</div>
+		<div class="col-md-6 col-lg-7">
+			<p><strong><?php echo $listing->mls_account; ?></strong></p>
+			<p><?php echo $listing->full_address; ?><br>
+			<?php echo $listing->city . ', ' . $listing->state; ?></p>
+			<p class="display-4 text-primary font-weight-bold">$<?php echo number_format($listing->price); ?></p>
+
+			<div class="row pb-3">
+				<?php if($listing->bedrooms > 0){ ?>
+					<div class="col-auto">
+						<span class="display-4 text-secondary"><?php echo number_format($listing->bedrooms); ?></span><br>
+						<small class="text-muted">BEDS</small>
+					</div>
+				<?php } ?>
+				<?php if($listing->total_bathrooms > 0){ ?>
+					<div class="col-auto">
+						<span class="display-4 text-secondary"><?php echo number_format($listing->total_bathrooms); ?></span><br>
+						<small class="text-muted">BATHS</small>
+					</div>
+				<?php } ?>
+				<?php if($listing->sqft > 0){ ?>
+					<div class="col-auto">
+						<span class="display-4 text-secondary"><?php echo number_format($listing->sqft); ?></span><br>
+						<small class="text-muted">SQFT</small>
+					</div>
+				<?php } ?>
+				<?php if($listing->acreage > 0 && $listing->bedrooms == 0){ ?>
+					<div class="col-auto">
+						<span class="display-4 text-secondary"><?php echo $listing->acreage; ?></span><br>
+						<small class="text-muted">ACRES</small>
+					</div>
+				<?php } ?>
+			</div>
+
+			<p><a class="listing-link" target="_blank" href="/listing/<?php echo $listing->mls_account; ?>/" >view property</a></p>
+		</div>
+	<?php
 }
 
 add_filter( 'post_updated_messages', 'contact_request_updated_messages' );

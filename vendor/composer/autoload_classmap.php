@@ -446,6 +446,8 @@ return array(
     'Illuminate\\View\\ViewName' => $vendorDir . '/illuminate/view/ViewName.php',
     'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/illuminate/view/ViewServiceProvider.php',
     'Includes\\Modules\\ContactForm' => $baseDir . '/public/themes/wordplate/modules/ContactForm.php',
+    'Includes\\Modules\\KMAMail\\KMAMail' => $baseDir . '/public/themes/wordplate/modules/KMAMail/KMAMail.php',
+    'Includes\\Modules\\KMAMail\\Message' => $baseDir . '/public/themes/wordplate/modules/KMAMail/Message.php',
     'JsonSerializable' => $vendorDir . '/nesbot/carbon/src/JsonSerializable.php',
     'KeriganSolutions\\KMAContactInfo\\ContactInfo' => $vendorDir . '/kerigansolutions/kma-contact-info/src/ContactInfo.php',
     'KeriganSolutions\\KMARealtor\\FeaturedListings' => $vendorDir . '/kerigansolutions/kma-rafgc-realtor/src/FeaturedListings.php',

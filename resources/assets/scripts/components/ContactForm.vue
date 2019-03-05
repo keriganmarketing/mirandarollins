@@ -55,6 +55,7 @@
 <script>
 import ContactForm from '../models/contact-form';
     export default {
+        props: ['listing'],
         data () {
             return {
                 form: new ContactForm({
@@ -62,7 +63,11 @@ import ContactForm from '../models/contact-form';
                     email: '',
                     phone: '',
                     comments: '',
-                    url: '/wp-json/kerigansolutions/v1/submit-contact-form'
+                    url: '/wp-json/kerigansolutions/v1/submit-contact-form',
+                    listing: '',
+                    image: '',
+                    address: '',
+                    price: ''
                 })
             }
         },
@@ -75,6 +80,14 @@ import ContactForm from '../models/contact-form';
             },
             success: function () {
                 return this.form.success;
+            }
+        },
+        mounted () {
+            if(this.listing != ''){
+                this.form.listing = this.listing.mls_account;
+                this.form.image   = this.listing.media_objects.data[0].url;
+                this.form.address = this.listing.full_address;
+                this.form.price   = this.listing.price;
             }
         },
         methods: {

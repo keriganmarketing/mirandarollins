@@ -3,8 +3,8 @@
 namespace Includes\Modules;
 
 use \WP_REST_Request;
-use KeriganSolutions\KMAMail\KMAMail;
-use KeriganSolutions\KMAMail\Message;
+use Includes\Modules\KMAMail\KMAMail;
+use Includes\Modules\KMAMail\Message;
 
 class ContactForm
 {
@@ -15,6 +15,10 @@ class ContactForm
     public $comments;
     public $errorCode;
     public $errorMessage;
+    public $listing;
+    public $address;
+    public $image;
+    public $price;
 
     const VALIDATION_ERROR = ['status' => 422];
 
@@ -46,8 +50,8 @@ class ContactForm
                 ->setBody($this->messageBody('You\'ve received a new lead.'))
                 ->setHeaders($headers)
                 ->setSubject('New Lead From Website')
-                ->setPrimaryColor('#b73838')
-                ->setSecondaryColor('#d74f0b')
+                ->setPrimaryColor('#de0a29')
+                ->setSecondaryColor('#59332a')
                 ->to('web@kerigan.com');
 
         $mail = new KMAMail($message);
@@ -61,11 +65,11 @@ class ContactForm
 
         $message = new Message();
         $message->setHeadline('Thank you for contacting me')
-                ->setBody($this->messageBody('We\'ve received your request. Here\'s a copy of what you submitted. We\'ll be in touch soon!' ))
+                ->setBody($this->messageBody('Here\'s a copy of what you submitted. I\'ll be in touch soon!' ))
                 ->setHeaders($headers)
                 ->setSubject('Your Contact Request')
-                ->setPrimaryColor('#b73838')
-                ->setSecondaryColor('#d74f0b')
+                ->setPrimaryColor('#de0a29')
+                ->setSecondaryColor('#59332a')
                 ->to($this->email);
 
         $mail = new KMAMail($message);
@@ -76,7 +80,8 @@ class ContactForm
     {
         return '
         <p>'.$introText.'</p>' .
-        $this->formInformation();
+        $this->formInformation() . 
+        $this->listingInfo();
     }
 
     public function formInformation()
@@ -87,6 +92,28 @@ class ContactForm
             <tr><td>Email</td><td>' . $this->email . '</td></tr>
             <tr><td>Phone Number</td><td>' . $this->phone . '</td></tr>
             <tr><td>Additional Information</td><td>' . $this->comments  . '</td></tr>
+        </table>
+        ';
+    }
+
+    public function listingInfo()
+    {        
+        if($this->listing == ''){
+            return '';
+        }
+
+        return '<br>        
+        <table cellspacing="0" cellpadding="0" border="0" class="datatable">
+            <tr><td colspan="2">Property Info</td></tr>
+            <tr>
+                <td width="50%"><img src="' . $this->image . '" width="100%" ></td>
+                <td width="50%">
+                    <p>' . $this->address . '</p>
+                    <p>$' . number_format($this->price) . '</p>
+                    <p>MLS# ' . $this->listing . '</p>
+                    <p><a href="'.get_home_url().'/listing/'.$this->listing.'" >view on website</a></p>
+                </td>
+            </tr>
         </table>
         ';
     }
@@ -128,6 +155,11 @@ class ContactForm
         $name =  $this->request->get_param('name') !== '' ? $this->request->get_param('name') : null;
         $email = $this->request->get_param('email') !== '' ? $this->request->get_param('email') : null;
         $phone = $this->request->get_param('phone') !== '' ? $this->request->get_param('phone') : null;
+        $comments = $this->request->get_param('comments') !== '' ? $this->request->get_param('comments') : null;
+        $listing = $this->request->get_param('listing') !== '' ? $this->request->get_param('listing') : null;
+        $address = $this->request->get_param('address') !== '' ? $this->request->get_param('address') : null;
+        $price = $this->request->get_param('price') !== '' ? $this->request->get_param('price') : null;
+        $image = $this->request->get_param('image') !== '' ? $this->request->get_param('image') : null;
 
         if ($name === null) {
             $this->errorCode = 'name_required';
@@ -148,9 +180,28 @@ class ContactForm
             return true;
         }
 
+        // if ($comments === null) {
+        //     $this->errorCode = 'comments_required';
+        //     $this->errorMessage = 'The message field is required';
+
+        //     return true;
+        // }
+
+        // if ($phone === null) {
+        //     $this->errorCode = 'phone_required';
+        //     $this->errorMessage = 'The phone field is required';
+
+        //     return true;
+        // }
+
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
+        $this->listing = $listing;
+        $this->comments = $comments;
+        $this->price = $price;
+        $this->image = $image;
+        $this->address = $address;
 
         return false;
     }
