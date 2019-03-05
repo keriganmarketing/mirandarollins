@@ -13993,6 +13993,10 @@ main article h2 {
   }
 }
 
+.feature-box-section .feature-box .btn {
+  background-color: rgba(89, 51, 42, 0.6);
+}
+
 .feature-box-section .box-container {
   padding: 0;
 }
