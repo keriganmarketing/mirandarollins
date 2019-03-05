@@ -3,9 +3,9 @@
         <input type="hidden" name="q"  >
         <input v-if="searchTerms.omni" type="hidden" name="omni" :value="searchTerms.omni" >
         <input v-if="searchTerms.area" type="hidden" name="area" :value="searchTerms.area" >
-        <input v-if="searchTerms.property_type" type="hidden" name="propertyType" :value="searchTerms.propertyType" >
-        <input v-if="searchTerms.min_price" type="hidden" name="minPrice" :value="searchTerms.minPrice" >
-        <input v-if="searchTerms.max_price" type="hidden" name="maxPrice" :value="searchTerms.maxPrice" >
+        <input v-if="searchTerms.propertyType" type="hidden" name="propertyType" :value="searchTerms.propertyType" >
+        <input v-if="searchTerms.minPrice" type="hidden" name="minPrice" :value="searchTerms.minPrice" >
+        <input v-if="searchTerms.maxPrice" type="hidden" name="maxPrice" :value="searchTerms.maxPrice" >
         <input v-if="searchTerms.sqft" type="hidden" name="sqft" :value="searchTerms.sqft" >
         <input v-if="searchTerms.acreage" type="hidden" name="acreage" :value="searchTerms.acreage" >
         <input v-if="searchTerms.details" type="hidden" name="details" :value="searchTerms.details" >

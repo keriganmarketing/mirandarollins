@@ -40135,21 +40135,21 @@ var render = function() {
         })
       : _vm._e(),
     _vm._v(" "),
-    _vm.searchTerms.property_type
+    _vm.searchTerms.propertyType
       ? _c("input", {
           attrs: { type: "hidden", name: "propertyType" },
           domProps: { value: _vm.searchTerms.propertyType }
         })
       : _vm._e(),
     _vm._v(" "),
-    _vm.searchTerms.min_price
+    _vm.searchTerms.minPrice
       ? _c("input", {
           attrs: { type: "hidden", name: "minPrice" },
           domProps: { value: _vm.searchTerms.minPrice }
         })
       : _vm._e(),
     _vm._v(" "),
-    _vm.searchTerms.max_price
+    _vm.searchTerms.maxPrice
       ? _c("input", {
           attrs: { type: "hidden", name: "maxPrice" },
           domProps: { value: _vm.searchTerms.maxPrice }
