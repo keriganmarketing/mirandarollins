@@ -13694,6 +13694,10 @@ ul.navbar-nav li a {
 }
 
 @media (max-width: 567px) {
+  .scrolling .top {
+    padding-top: .5rem;
+  }
+
   .scrolling .top .logo {
     display: none !important;
   }

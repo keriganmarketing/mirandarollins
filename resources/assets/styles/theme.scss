@@ -192,9 +192,9 @@ ul.navbar-nav {
 
 .scrolling {
     .top {
-        // padding-top:.5rem;
-
         @media (max-width: 567px){
+            padding-top:.5rem;
+
             .logo {
                 display: none !important;
             }
