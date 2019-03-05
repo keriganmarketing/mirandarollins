@@ -122,7 +122,7 @@ function testimonial_func( $atts ){
     <div class="testimonials">
         <?php foreach($testimonials as $testimonial){ ?>
             <div class="testimonial border-bottom py-3" >
-                <a class="pad-anchor" name="<?php echo $testimonial->ID; ?>"></a>
+                <a class="pad-anchor" name="review-<?php echo $testimonial->ID; ?>"></a>
                 <p><?php echo $testimonial->excerpt; ?> 
                 <a href="<?php echo get_permalink($testimonial->ID); ?>">read more.</a></p>
                 <p class="byline">&mdash; <?php echo $testimonial->byline; ?></p>
