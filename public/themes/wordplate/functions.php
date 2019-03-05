@@ -123,8 +123,7 @@ function testimonial_func( $atts ){
         <?php foreach($testimonials as $testimonial){ ?>
             <div class="testimonial border-bottom py-3" >
                 <a class="pad-anchor" name="review-<?php echo $testimonial->ID; ?>"></a>
-                <p><?php echo $testimonial->excerpt; ?> 
-                <a href="<?php echo get_permalink($testimonial->ID); ?>">read more.</a></p>
+                <p><?php echo wp_trim_words($testimonial->post_content, 50, '... <a href="'.get_permalink($testimonial->ID).'">read more.</a>'); ?></p>
                 <p class="byline">&mdash; <?php echo $testimonial->byline; ?></p>
             </div>
         <?php } ?>
