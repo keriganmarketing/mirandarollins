@@ -14229,6 +14229,11 @@ footer .siteby {
   border-bottom: 0.25rem #de0a29 solid;
 }
 
+#app .listing .property-type {
+  text-align: center;
+  font-size: .8rem;
+}
+
 #app .listing .mls-number {
   color: rgba(0, 0, 0, 0.4);
   font-size: .8rem;

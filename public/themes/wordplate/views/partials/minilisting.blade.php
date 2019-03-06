@@ -19,8 +19,13 @@
     <div class="p-4 text-center text-dark flex-grow-1">
         <p>{{ $miniListing->full_address }}<br>
            {{ $miniListing->city . ', ' . $miniListing->state }}</p>
-        <p class="display-4 text-primary font-weight-bold">${{ number_format($miniListing->price) }}</p>
+        <p class="property-type text-muted">{{ $miniListing->prop_type }}</p>
 
+        @if($miniListing->price !== null)
+        <p class="display-4 text-primary font-weight-bold">${{ number_format($miniListing->price) }}</p>
+        @elseif(isset($miniListing->monthly_rent))
+        <p class="display-4 text-primary font-weight-bold">${{ number_format($miniListing->monthly_rent) }} <small>/ mo.</small></p>
+        @endif
         <div class="row justify-content-center">
         @if($miniListing->bedrooms > 0)
             <div class="col">
