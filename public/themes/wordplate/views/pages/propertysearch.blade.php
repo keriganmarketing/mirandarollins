@@ -9,7 +9,7 @@
             <div class="container-wide">
                 <article class="support">
                     <header class="pt-0 pt-xl-5 text-center text-md-left">
-                        <h1>{{ the_title() }}</h1>
+                        <h1>{{ $headline }}</h1>
                     </header>
                     {{ the_content() }}
 
