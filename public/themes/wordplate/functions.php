@@ -115,7 +115,7 @@ add_filter('wpseo_opengraph_image', function () {
 
 //[quicksearch]
 function testimonial_func( $atts ){
-    $testimonials = (new KeriganSolutions\KMATestimonials\Testimonial)->queryTestimonials(false, -1, 'date', 'ASC', 50);
+    $testimonials = (new KeriganSolutions\KMATestimonials\Testimonial)->queryTestimonials(false, -1, 'date', 'ASC', 100);
 
     ob_start();
     ?>
@@ -123,7 +123,7 @@ function testimonial_func( $atts ){
         <?php foreach($testimonials as $testimonial){ ?>
             <div class="testimonial border-bottom py-3" >
                 <a class="pad-anchor" name="review-<?php echo $testimonial->ID; ?>"></a>
-                <p><?php echo wp_trim_words($testimonial->post_content, 50, '... <a href="'.get_permalink($testimonial->ID).'">read more.</a>'); ?></p>
+                <p><?php echo wp_trim_words($testimonial->post_content, 100, '... <a href="'.get_permalink($testimonial->ID).'">read more.</a>'); ?></p>
                 <p class="byline">&mdash; <?php echo $testimonial->byline; ?></p>
             </div>
         <?php } ?>
