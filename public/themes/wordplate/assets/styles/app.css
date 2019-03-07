@@ -13821,7 +13821,7 @@ main article h2 {
 @media screen and (min-width: 567px) {
   .slider-container,
   .main-header-image {
-    min-height: 320px;
+    min-height: 420px;
   }
 }
 
@@ -13858,19 +13858,33 @@ main article h2 {
   font-family: "Montserrat", sans-serif !important;
   font-weight: 700;
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   line-height: 2rem;
   margin: 0;
-  padding: 4rem 0 0;
+  padding: 5rem 0 0;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (min-width: 375px) {
+  .slider-container .overlay-content h2,
+  .main-header-image .overlay-content h2 {
+    font-size: 1.6rem;
+  }
 }
 
 @media screen and (min-width: 567px) {
   .slider-container .overlay-content h2,
   .main-header-image .overlay-content h2 {
-    padding: 0 0 1rem;
+    padding: 1rem 0 .25rem;
     font-size: 2.5rem;
     line-height: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 667px) {
+  .slider-container .overlay-content h2,
+  .main-header-image .overlay-content h2 {
+    padding: 1.5rem 0 .5rem;
   }
 }
 
