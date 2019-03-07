@@ -41846,7 +41846,7 @@ var render = function() {
         { staticClass: "row no-gutters" },
         _vm._l(_vm.photos, function(photo, index) {
           return _c("div", { key: photo.id, class: _vm.itemClass }, [
-            _c("div", { staticClass: "photo-tile has-text-centered" }, [
+            _c("div", { staticClass: "photo-tile has-text-centered shadow" }, [
               _c(
                 "div",
                 { staticClass: "embed-responsive embed-responsive-16by9" },
