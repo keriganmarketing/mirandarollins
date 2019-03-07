@@ -100,6 +100,7 @@ export default {
 <style scoped>
 .search-select {
     position: relative;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 .search-select-input {
     -webkit-appearance: none;
@@ -109,14 +110,15 @@ export default {
     display: block;
     width: 100%;
     border-width: 1px;
-    padding: 0.38rem 0.7rem;
+    height: calc(3rem + 2px);
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
     background-color: #fff;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
 }
 .search-select-input:focus {
   outline: 0;
@@ -186,4 +188,3 @@ export default {
   color: #b8c2cc;
 }
 </style>
-
