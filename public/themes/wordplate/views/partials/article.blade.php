@@ -19,7 +19,7 @@
 @endif
 
 @if(get_post_format() == 'status')
-<div class="card border-primary status-update shadow">
+<div class="card status-update shadow">
     <div class="card-body text-dark">
         <small class="text-muted">{{ get_the_date() }}</small>
         <p class="h3">{{ the_title() }}</p>
