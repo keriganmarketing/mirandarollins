@@ -19,10 +19,10 @@
 @endif
 
 @if(get_post_format() == 'status')
-<div class="card bg-primary status-update">
-    <div class="card-body text-white">
-        <small class="text-white">{{ get_the_date() }}</small>
-        <p class="display-4">{{ the_title() }}</p>
+<div class="card bg-light border-primary status-update">
+    <div class="card-body text-dark">
+        <small class="text-muted">{{ get_the_date() }}</small>
+        <p class="h3">{{ the_title() }}</p>
         {{ the_content() }}
     </div>
 </div>
