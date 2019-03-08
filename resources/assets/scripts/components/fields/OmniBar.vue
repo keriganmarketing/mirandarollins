@@ -1,15 +1,20 @@
 <template>
 <on-click-outside :do="close">
     <div class="search-select" :class="{ 'is-active': isOpen }">
-        <button
-            ref="button"
-            @click="open"
-            type="button"
-            class="search-select-input"
-        >
-            <span v-if="value !== null">{{ toTitleCase(value) }}</span>
-            <span v-else class="search-select-placeholder">Address, MLS, Area</span>
-        </button>
+        <div class="d-flex">
+            <button
+                ref="button"
+                @click="open"
+                type="button"
+                class="search-select-input"
+            >
+                <span v-if="value !== null">{{ toTitleCase(value) }}</span>
+                <span v-else class="search-select-placeholder">Address, MLS, Area</span>
+            </button>
+            <span v-if="search !== ''" @click="clear()" class="btn btn-secondary pointer">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+        </div>
         <div ref="dropdown" v-show="isOpen" class="search-select-dropdown">
             <input
                 ref="search"
@@ -79,6 +84,10 @@ export default {
             if (! this.isOpen) return
             this.isOpen = false
             this.$refs.button.focus();
+        },
+        clear() {
+            this.search = '';
+            this.$emit('input', '')
         },
         select(option) {
             this.search = option
@@ -188,3 +197,4 @@ export default {
   color: #b8c2cc;
 }
 </style>
+

@@ -6775,6 +6775,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6819,6 +6824,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!this.isOpen) return;
             this.isOpen = false;
             this.$refs.button.focus();
+        },
+        clear: function clear() {
+            this.search = '';
+            this.$emit('input', '');
         },
         select: function select(option) {
             this.search = option;
@@ -41288,22 +41297,44 @@ var render = function() {
       "div",
       { staticClass: "search-select", class: { "is-active": _vm.isOpen } },
       [
-        _c(
-          "button",
-          {
-            ref: "button",
-            staticClass: "search-select-input",
-            attrs: { type: "button" },
-            on: { click: _vm.open }
-          },
-          [
-            _vm.value !== null
-              ? _c("span", [_vm._v(_vm._s(_vm.toTitleCase(_vm.value)))])
-              : _c("span", { staticClass: "search-select-placeholder" }, [
-                  _vm._v("Address, MLS, Area")
-                ])
-          ]
-        ),
+        _c("div", { staticClass: "d-flex" }, [
+          _c(
+            "button",
+            {
+              ref: "button",
+              staticClass: "search-select-input",
+              attrs: { type: "button" },
+              on: { click: _vm.open }
+            },
+            [
+              _vm.value !== null
+                ? _c("span", [_vm._v(_vm._s(_vm.toTitleCase(_vm.value)))])
+                : _c("span", { staticClass: "search-select-placeholder" }, [
+                    _vm._v("Address, MLS, Area")
+                  ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm.search !== ""
+            ? _c(
+                "span",
+                {
+                  staticClass: "btn btn-secondary pointer",
+                  on: {
+                    click: function($event) {
+                      return _vm.clear()
+                    }
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-times",
+                    attrs: { "aria-hidden": "true" }
+                  })
+                ]
+              )
+            : _vm._e()
+        ]),
         _vm._v(" "),
         _c(
           "div",
