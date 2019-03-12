@@ -10,7 +10,7 @@
                                     get_theme_mod( 'custom_logo' ), 
                                     'full' 
                                 ) ) }}" 
-                            alt=""
+                            alt="{{ get_bloginfo('name') }}"
                             class="img-fluid"
                         >
                     </a>

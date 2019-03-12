@@ -3,6 +3,7 @@
         <div><label>Min Price</label></div>
         <select
             name="minPrice"
+            id="min-price-field"
             class="custom-select"
             v-model="selected"
         >

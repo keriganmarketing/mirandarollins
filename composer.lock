@@ -1058,16 +1058,16 @@
         },
         {
             "name": "kerigansolutions/kma-social-icons",
-            "version": "1.3",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kerigansolutions/kma-social-icons.git",
-                "reference": "87f8018c5b1e3144e1f308f42e229ed9d1510323"
+                "reference": "b987a43d0e3824323f2cebf759733681c283c8c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/kma-social-icons/zipball/87f8018c5b1e3144e1f308f42e229ed9d1510323",
-                "reference": "87f8018c5b1e3144e1f308f42e229ed9d1510323",
+                "url": "https://api.github.com/repos/kerigansolutions/kma-social-icons/zipball/b987a43d0e3824323f2cebf759733681c283c8c1",
+                "reference": "b987a43d0e3824323f2cebf759733681c283c8c1",
                 "shasum": ""
             },
             "type": "library",
@@ -1087,7 +1087,7 @@
                 }
             ],
             "description": "WordPress module to configure social media icons",
-            "time": "2018-09-10T20:58:53+00:00"
+            "time": "2019-03-12T17:07:23+00:00"
         },
         {
             "name": "kerigansolutions/kma-team-module",

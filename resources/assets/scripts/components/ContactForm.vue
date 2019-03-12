@@ -4,8 +4,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label class="sr-only" for="name-field">Name</label>
                         <input
                             type="text"
+                            id="name-field"
                             class="form-control border-0"
                             placeholder="Name"
                             v-model="form.name"
@@ -15,8 +17,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label class="sr-only" for="email-field">Email Address</label>
                         <input
                             type="email"
+                            id="email-field"
                             class="form-control border-0"
                             placeholder="Email Address"
                             v-model="form.email"
@@ -26,8 +30,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label class="sr-only" for="phone-number-field">Phone Number</label>
                         <input
-                            type="email"
+                            type="tel"
+                            id="phone-number-field"
                             class="form-control border-0"
                             placeholder="Phone Number"
                             v-model="form.phone"
@@ -37,6 +43,7 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
+                        <label class="sr-only" for="message-field">Message</label>
                         <textarea
                             class="form-control border-0"
                             placeholder="Message"

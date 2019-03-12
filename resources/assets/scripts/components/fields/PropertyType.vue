@@ -2,6 +2,7 @@
     <div>
         <select 
             name="propertyType" 
+            id="property-type-field"
             v-model="selected" 
             class="prop-type-input custom-select" >
             <option value="Any">All Types</option>

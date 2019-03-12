@@ -11,7 +11,7 @@
 
         @if(get_field('broker_logo', 'option'))
         <div class="broker-logo" >
-            {!! (get_field('broker_link', 'option') ? '<a href="'.get_field('broker_link', 'option').'" target="_blank" >' : null) !!}
+            {!! (get_field('broker_link', 'option') ? '<a href="'.get_field('broker_link', 'option').'" target="_blank" rel="noopener" >' : null) !!}
             <img src="{{ wp_get_attachment_url(get_field('broker_logo', 'option'),'medium') }}" alt="{{ get_field('broker_name', 'option') }}" >
             {!! (get_field('broker_link', 'option') ? '</a>' : null) !!}
         </div>

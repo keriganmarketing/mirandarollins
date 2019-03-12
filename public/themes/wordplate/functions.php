@@ -63,10 +63,12 @@ function quicksearch_func( $atts ){
         <input name="q" value="search" type="hidden" >
         <div class="row align-items-center no-gutters">
             <div class="col-12 col-md-auto mb-2 pr-md-0">
+                <label class="sr-only" for="property-type-field">Property Type</label>
                 <property-type></property-type>
             </div>
             <div class="d-none d-md-block col-auto mb-2 px-4"><span class="text-shadow">IN</span></div>
             <div class="col-9 col-md-auto mb-2 pr-4">
+                <label class="sr-only" for="area-field">Area</label>
                 <area-field></area-field>
             </div>
             <div class="col-3 col-md-auto mb-2">

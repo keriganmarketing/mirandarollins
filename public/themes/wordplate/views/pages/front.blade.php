@@ -19,7 +19,7 @@
         
         @if($headshot != '')
         <div class="headshot d-flex justify-content-center" >
-            <img src="{{ $headshot }}" class="rounded-circle shadow">
+            <img src="{{ $headshot }}" class="rounded-circle shadow" alt="{{ get_field('agent_name','option') }}">
         </div>
         @endif
 

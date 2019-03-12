@@ -6,6 +6,7 @@
                 v-html="icon['icon']" 
                 :href="icon['link']"
                 :style="'width:' + size + 'px; margin:' + margin + 'rem;'"
+                rel="noopener"
                 target="_blank"
             ></a>
         </div>

@@ -3,6 +3,7 @@
         <div><label>Total Sqft</label></div>
         <select 
             name="sqft" 
+            id="sqft-field"
             v-model="selected" 
             class="custom-select">
             <option value="Any">Any</option>

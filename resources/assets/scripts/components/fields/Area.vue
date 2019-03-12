@@ -2,6 +2,7 @@
     <div>
         <select 
             name="area" 
+            id="area-field"
             v-model="selected" 
             class="area-input custom-select">
             <option value="Any">All Areas</option>

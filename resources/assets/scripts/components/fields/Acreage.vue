@@ -3,6 +3,7 @@
         <div><label>Acreage</label></div>
         <select
             name="acreage"
+            id="acreage-field"
             class="custom-select"
             v-model="selected"
         >

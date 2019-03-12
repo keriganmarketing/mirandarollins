@@ -3,6 +3,7 @@
         <div><label>Bathrooms</label></div>
         <select
             name="baths"
+            id="bathrooms-field"
             class="custom-select"
             v-model="selected"
         >

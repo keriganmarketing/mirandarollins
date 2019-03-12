@@ -3,6 +3,7 @@
         <div><label>Max Price</label></div>
         <select
             name="maxPrice"
+            id="max-price-field"
             class="custom-select"
             v-model="selected"
         >

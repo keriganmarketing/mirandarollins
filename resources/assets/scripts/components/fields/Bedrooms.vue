@@ -3,6 +3,7 @@
         <div><label>Bedrooms</label></div>
         <select
             name="beds"
+            id="bedrooms-field"
             class="custom-select"
             v-model="selected"
         >
