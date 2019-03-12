@@ -24,9 +24,9 @@
             
             <div class="flex-grow-1">
                 <div class="contact-nav">
-                    <a class="mail top-button" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-primary">{{ get_field('email', 'option') }}</span></a>
-                    <a class="call top-button" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-primary">{{ get_field('phone', 'option') }}</span></a>
-                    <button v-on:click="toggleMenu" class="d-xl-none btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#mobilemenu" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="mail top-button" title="{{ get_field('email', 'option') }}" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-primary">{{ get_field('email', 'option') }}</span></a>
+                    <a class="call top-button" title="{{ get_field('phone', 'option') }}" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-primary">{{ get_field('phone', 'option') }}</span></a>
+                    <button v-on:click="toggleMenu" class="d-xl-none btn btn-secondary btn-sm" type="button" data-toggle="collapse" aria-controls="mobile-navigation-menu" aria-expanded="false" aria-label="Toggle navigation">
                         MENU <i
                                 class="fa" 
                                 v-bind:class="{
@@ -39,12 +39,19 @@
                 </div>
                 
                 <div class="main-navigation collapse navbar-collapse">
-                    <main-menu v-bind:main-nav="{{ website_menu('main-navigation') }}" class="navbar-nav ml-auto"></main-menu>
+                    <main-menu 
+                        v-bind:main-nav="{{ website_menu('main-navigation') }}" 
+                        class="navbar-nav ml-auto"
+                    ></main-menu>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <div v-if="mobileMenuOpen" class="mobile-menu align-items-center" ref="mobileMenuContainer" v-bind:class="{ 'open': this.mobileMenuOpen }" >
-    <mobile-menu v-bind:mobile-nav="{{ website_menu('mobile-navigation') }}" class="navbar-nav m-auto" ></mobile-menu>
+    <mobile-menu 
+        v-bind:mobile-nav="{{ website_menu('mobile-navigation') }}" 
+        class="navbar-nav m-auto" 
+        id="mobile-navigation-menu" 
+    ></mobile-menu>
 </div>
