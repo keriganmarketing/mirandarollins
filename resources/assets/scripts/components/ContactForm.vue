@@ -45,6 +45,7 @@
                     <div class="form-group">
                         <label class="sr-only" for="message-field">Message</label>
                         <textarea
+                            id="message-field"
                             class="form-control border-0"
                             placeholder="Message"
                             v-model="form.comments"
