@@ -666,8 +666,15 @@ footer {
             box-shadow: 0 0 .5rem rgba(0,0,0,.3);
         }
         .main-image {
-            background-size: cover !important;
             border-bottom: 1px solid #dedede;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover !important;
+
+            &[lazy=loading]{
+                background-size: auto !important;
+            }
+
             img {
                 height: auto !important;
             }

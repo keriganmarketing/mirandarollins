@@ -33,7 +33,12 @@ Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '/themes/wordplate/assets/images/loading.svg',
   loading: '/themes/wordplate/assets/images/loading.svg',
-  attempt: 1
+  attempt: 1,
+  observer: true,
+  observerOptions: {
+    rootMargin: '0px',
+    threshold: 0.1
+  }
 })
 
 const app = new Vue({
@@ -75,7 +80,7 @@ const app = new Vue({
     },
 
     created () {
-        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll, {passive: true});
     },
 
     destroyed () {

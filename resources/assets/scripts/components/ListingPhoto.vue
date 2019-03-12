@@ -1,13 +1,27 @@
 <template>
-    <img 
-        v-lazy="url" 
-        :alt="alt"
-        class="embed-responsive-item" 
+    <div 
+        class="embed-responsive embed-responsive-16by9 main-image"
+        v-lazy:background-image="url"
+        :style="
+            'background-size: ' + size + ';'
+        "
     >
+    </div>
 </template>
 <script>
 export default {
-    props: ['url', 'alt']
+    props: ['src', 'alt'],
+    data() {
+        return {
+            url: {
+                src: this.src,
+                error: '/themes/wordplate/assets/images/loading.svg',
+                loading: '/themes/wordplate/assets/images/loading.svg'
+            },
+            size: 'auto'
+        }
+    }
 }
 </script>
+
 
