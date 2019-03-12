@@ -668,6 +668,9 @@ footer {
         .main-image {
             background-size: cover !important;
             border-bottom: 1px solid #dedede;
+            img {
+                height: auto !important;
+            }
         }
         .listing-link {
             left: 0; right: 0; bottom: 0; top: 0;
