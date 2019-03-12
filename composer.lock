@@ -988,16 +988,16 @@
         },
         {
             "name": "kerigansolutions/kma-rafgc-realtor",
-            "version": "1.4.5",
+            "version": "1.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kerigansolutions/kma-rafgc-realtor.git",
-                "reference": "4ac36a3900f783604b15cb845d95e476f74ef460"
+                "reference": "98e94ad86ed88e3610158355fe63aee98b2cc467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kerigansolutions/kma-rafgc-realtor/zipball/4ac36a3900f783604b15cb845d95e476f74ef460",
-                "reference": "4ac36a3900f783604b15cb845d95e476f74ef460",
+                "url": "https://api.github.com/repos/kerigansolutions/kma-rafgc-realtor/zipball/98e94ad86ed88e3610158355fe63aee98b2cc467",
+                "reference": "98e94ad86ed88e3610158355fe63aee98b2cc467",
                 "shasum": ""
             },
             "require": {
@@ -1021,7 +1021,7 @@
                 }
             ],
             "description": "RAFGC realtor package for KMA WP Sites",
-            "time": "2019-03-11T20:21:08+00:00"
+            "time": "2019-03-12T14:02:06+00:00"
         },
         {
             "name": "kerigansolutions/kma-slider-module",
