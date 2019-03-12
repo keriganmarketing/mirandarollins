@@ -27,6 +27,7 @@
         "vue": "^2.6",
         "vue-carousel": "^0.17.0",
         "vue-invisible-recaptcha": "^0.2.1",
+        "vue-lazyload": "^1.2.6",
         "vue-masonry": "^0.11.7",
         "vue-template-compiler": "^2.6"
     },

@@ -25,6 +25,17 @@ Vue.use(PortalVue);
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);
 
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload)
+
+// or with options
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '/themes/wordplate/assets/images/loading.svg',
+  loading: '/themes/wordplate/assets/images/loading.svg',
+  attempt: 1
+})
+
 const app = new Vue({
     el: '#app',
 

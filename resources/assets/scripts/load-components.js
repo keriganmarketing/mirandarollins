@@ -11,6 +11,7 @@ Vue.component('kma-slider', require('./components/KMASliderModule.vue'));
 Vue.component('contact-form', require('./components/ContactForm.vue'));
 // Vue.component('fit-text', require('./components/FitText.vue'));
 Vue.component('photo-gallery', require('./components/PhotoGallery.vue'));
+Vue.component('listing-photo', require('./components/ListingPhoto.vue'));
 
 //search
 Vue.component('omni-bar', require('./components/fields/OmniBar.vue'));

@@ -12,10 +12,17 @@
     @if($miniListing->original_list_price > $miniListing->price && $miniListing->status == 'Active' && $miniListing->original_list_price != 0)
         <span class="status-flag reduced bg-danger">REDUCED <span style="text-decoration:line-through">$<?php echo number_format( $miniListing->original_list_price ); ?></span> <strong>$<?php echo number_format( $miniListing->price); ?></strong></span>
     @endif
-    <div 
-        class="embed-responsive embed-responsive-16by9 main-image"
-        style="background: url({{ $miniListing->media_objects->data[0]->url }}) center no-repeat"
-        ></div>
+    <div class="embed-responsive embed-responsive-16by9 main-image">
+        <listing-photo 
+            url="{{ $miniListing->media_objects->data[0]->url }}" 
+            alt="Photo of MLS# {{ $miniListing->mls_account }}"
+        ></listing-photo>
+        {{-- <img 
+            v-lazy="{{ $miniListing->media_objects->data[0]->url }}" 
+            alt="Photo of MLS# {{ $miniListing->mls_account }}"
+            class="embed-responsive-item" 
+        > --}}
+    </div>
     <div class="p-4 text-center text-dark flex-grow-1">
         <p>{{ $miniListing->full_address }}<br>
            {{ $miniListing->city . ', ' . $miniListing->state }}</p>
