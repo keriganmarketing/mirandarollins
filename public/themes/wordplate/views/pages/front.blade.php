@@ -64,7 +64,7 @@
                 </carousel>
             </div>
             <div class="section-button">
-                <a class="btn btn-light" href="/my-listings" >See All My Listings</a>
+                <a class="btn btn-light" href="/my-listings/" >See All My Listings</a>
             </div>
         </div>
         @endif

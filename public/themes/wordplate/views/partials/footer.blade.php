@@ -20,7 +20,7 @@
     </div>
     <hr>
     <p class="copyright text-center">&copy;{{ date('Y') }} {{ get_bloginfo() }}. All Rights&nbsp;Reserved. 
-        <a style="text-decoration:underline;" href="/privacy-policy" >Privacy&nbsp;Policy</a> 
+        <a style="text-decoration:underline;" href="/privacy-policy/" >Privacy&nbsp;Policy</a> 
         <span class="siteby">
             <svg version="1.1" id="kma" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="14" width="20"
