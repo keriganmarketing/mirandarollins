@@ -62,5 +62,7 @@
         </div>
     </div>
     <div class="p-2 text-center"><span class="mls-number">MLS# {{ $miniListing->mls_account }}</span></div>
-    <a class="position-absolute listing-link" href="/listing/{{ $miniListing->mls_account }}/" ></a>
+    <a class="position-absolute listing-link" href="/listing/{{ $miniListing->mls_account }}/" >
+        <span class="sr-only">View Listing {{ $miniListing->mls_account }}</a>
+    </a>
 </div>
