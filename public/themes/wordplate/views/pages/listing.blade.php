@@ -36,7 +36,7 @@
                         <div class="col-12 col-lg-auto pb-4">
                             <div class="p-4 d-flex flex-column align-items-center">
                             <h3 class="text-muted">Share this property</h3>
-                            {!! do_shortcode('[Sassy_Social_Share]') !!}
+                            {!! do_shortcode('[Sassy_Social_Share url="'. $_SERVER['HTTP_HOST'] . $_SERVER["REQUEST_URI"] .'"]') !!}
                             </div>
                         </div>
 
