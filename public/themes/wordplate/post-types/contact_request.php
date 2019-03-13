@@ -156,6 +156,10 @@ function contact_listing_metabox()
     $mlsNum = get_post_meta($post->ID, 'listing', true);
 	// Output the field
 
+	if($mlsNum == ''){
+		return 'No listing attached.';
+	}
+
 	$listing = new KeriganSolutions\KMARealtor\Listing();
 	$listing->set($mlsNum);
 	$listing = $listing->getListing();
