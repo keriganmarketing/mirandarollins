@@ -38,6 +38,8 @@
                         {{-- {!! $pagination !!} --}}
                     </div>
 
+                    @include('partials.disclaimer')
+
                 @else
 
                     <p>There were no properties found using your search criteria. Please broaden your search and try again.</p>

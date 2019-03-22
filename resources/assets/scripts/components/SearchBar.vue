@@ -24,7 +24,7 @@
         <div v-if="showSort" class="mb-4">
             <sort-form :search-terms="searchTerms" class="sort-form" ></sort-form>
         </div>
-        <form v-if="showSearch" class="form" method="get" :ref="searchForm" >
+        <form v-if="showSearch" class="form" method="get" >
             <input type="hidden" name="q" value="search" >
             <input v-if="searchTerms.sort" type="hidden" name="sort" :value="searchTerms.sort" >
             <input v-if="searchTerms.minPrice && searchTerms.minPrice != 'Any'" type="hidden" name="minPrice" :value="searchTerms.minPrice" >
@@ -123,7 +123,12 @@
 
 <script>
     export default {
-        props: ['searchTerms'],
+        props: {
+            'searchTerms': {
+                type: Object,
+                default: {}
+            }
+        },
         data(){
             return {
                 omni: null,

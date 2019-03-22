@@ -3,10 +3,15 @@
         <div class="section-title">
             <h2>Contact Me</h2>
         </div>
-        <p class="m-0"><a href="tel:{{ get_field('phone', 'option') }}">{{ get_field('phone', 'option') }}</a></p>
-        <p><a href="mailto:{{ get_field('email', 'option') }}">{{ get_field('email', 'option') }}</a></p>
-        <social-icons :size="37" :margin=".25" class="d-flex social-icons justify-content-center mb-4" ></social-icons>
 
+        <p>{{ get_field('email', 'agent_name') }}</p>
+        <p class="m-0"><a class="text-underline" href="tel:{{ get_field('phone', 'option') }}">{{ get_field('phone', 'option') }}</a></p>
+        <p><a class="text-underline" href="mailto:{{ get_field('email', 'option') }}">{{ get_field('email', 'option') }}</a></p>
+        <p>{{ get_field('broker_name', 'option') }}, 
+        {!! nl2br(get_field('address', 'option')) !!}</p>
+
+        <social-icons :size="37" :margin=".25" class="d-flex social-icons justify-content-center mb-4" ></social-icons>
+        
         <contact-form class="contact-form" :listing='{{ json_encode((isset($listing) && $listing != '' ? $listing : '')) }}' ></contact-form>
 
         @if(get_field('broker_logo', 'option'))
@@ -15,7 +20,7 @@
             <img src="{{ wp_get_attachment_url(get_field('broker_logo', 'option'),'medium') }}" alt="{{ get_field('broker_name', 'option') }}" >
             {!! (get_field('broker_link', 'option') ? '</a>' : null) !!}
         </div>
-        @endif
+        @endif        
 
     </div>
     <hr>

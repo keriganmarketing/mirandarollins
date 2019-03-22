@@ -66,6 +66,9 @@
 						    @include('listing.map')
                         </div>
                     </div>
+
+                    @include('partials.disclaimer')
+                    
                 </article>
             </div>
         </main>

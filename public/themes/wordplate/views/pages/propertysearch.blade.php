@@ -44,6 +44,8 @@
                         {!! $pagination !!}
                     </div>
 
+                    @include('partials.disclaimer')
+
                 @else
 
                     <p class="my-4">There were no properties found using your search criteria. Please broaden your search and try again.</p>
