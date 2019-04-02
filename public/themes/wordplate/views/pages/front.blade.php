@@ -48,8 +48,8 @@
                     :autoplay="true"
                     :loop="true"
                     :pagination-enabled="false"
-                    :autoplay-timeout="5000"
-                    :speed="2000"
+                    :autoplay-timeout="4000"
+                    :speed="1000"
                     {{-- pagination-position="top"
                     pagination-active-color="red" --}}
                     :scroll-per-page="false"
