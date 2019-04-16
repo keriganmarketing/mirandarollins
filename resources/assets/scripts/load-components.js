@@ -28,3 +28,4 @@ Vue.component('details-field', require('./components/fields/Details.vue'));
 Vue.component('search-bar', require('./components/SearchBar.vue'));
 Vue.component('sort-form', require('./components/SortForm.vue'));
 Vue.component('video-bg', require('./components/VideoBackground.vue'));
+Vue.component('quick-search', require('./components/QuickSearch.vue'));

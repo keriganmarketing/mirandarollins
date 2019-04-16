@@ -18,7 +18,7 @@
         @endif
         
         @if($headshot != '')
-        <div class="headshot d-flex justify-content-center" >
+        <div class="headshot d-flex justify-content-center pb-3" >
             <img src="{{ $headshot }}" class="rounded-circle shadow" alt="{{ get_field('agent_name','option') }}">
         </div>
         @endif

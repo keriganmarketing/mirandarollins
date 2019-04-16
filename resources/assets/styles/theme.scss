@@ -52,7 +52,6 @@ body {
                     height: 180px;
                     margin-top:-90px;
                     position: relative;
-                    z-index: 3;
 
                     @media screen and (min-width: 768px){
                         width: 220px;
@@ -312,8 +311,6 @@ main {
 .main-header-image {
     position: relative;
     min-height: 450px;
-    overflow: hidden;
-    z-index: 0;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -341,6 +338,9 @@ main {
         z-index: 2;
         justify-content: center;
         text-align: center;
+        width: 600px;
+        max-width: 100%;
+        margin: auto;
 
         h2 {
             font-family: $font-family-sans-serif !important;
