@@ -2,6 +2,8 @@
     <div class="quick-search w-100 p-4 d-inline-block text-white">
         <form action="property-search">
         <input name="q" value="search" type="hidden" >
+        <input type="hidden" name="sort" value="list_date|desc" >
+        
         <div class="row d-flex align-items-center">
             <div class="col-12 col-sm mb-2 flex-grow-1">
                 <omni-bar
@@ -15,6 +17,8 @@
                 <button class="btn btn-block btn-primary">SEARCH</button>
             </div>
         </div>
+        <input type="hidden" name="area" value="Any" >
+        <input type="hidden" name="propertyType" value="Any" >
         </form>
     </div>
 </template>

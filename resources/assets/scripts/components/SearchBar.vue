@@ -2,6 +2,7 @@
     <div>
         <div v-if="!showSearch && !showSort" class="d-flex mb-4 justify-content-between align-items-center" >
             <div class="d-none d-md-block">
+                <span v-if="searchTerms.omni != ''" class="mr-3 small text-muted">Keyword: <b>{{ searchTerms.omni }}</b></span>
                 <span v-if="searchTerms.area != 'Any'" class="mr-3 small text-muted">Area: <b>{{ searchTerms.area }}</b></span>
                 <span v-if="searchTerms.propertyType != 'Any'" class="mr-3 small text-muted">Type: <b>{{ searchTerms.propertyType }}</b></span>
                 <span v-if="(searchTerms.minPrice && searchTerms.minPrice != 'Any') || (searchTerms.maxPrice && searchTerms.maxPrice != 'Any')" class="mr-3 small text-muted">Price: 
