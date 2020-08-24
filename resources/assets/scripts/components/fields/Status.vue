@@ -25,8 +25,8 @@
     export default {
         props: {
             searchTerms: {
-                type: Array,
-                default: this.searchTerms
+                type: Object,
+                default: () => {}
             }
         },
 

@@ -1,9 +1,6 @@
 @extends('layouts.main')
 @section('content')
 
-@if (have_posts())
-    @while (have_posts())
-        {{ the_post() }}
         @include('partials.mast')
         <main role="main" class="pb-5">
             <div class="container">
@@ -35,8 +32,47 @@
 
                         <div class="col-12 col-lg-auto pb-4">
                             <div class="p-4 d-flex flex-column align-items-center">
-                            <h3 class="text-muted">Share this property</h3>
-                            {!! do_shortcode('[Sassy_Social_Share url="'. $_SERVER['HTTP_HOST'] . $_SERVER["REQUEST_URI"] .'"]') !!}
+                                <h3 class="text-muted">Share this property</h3>
+                                <div class="d-flex flex-wrap" >
+                                <social-sharing-icons
+                                    network="email"
+                                    icon="envelope"
+                                    class="share-network email"
+                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
+                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    description="{{ $listing->remarks }}"
+                                ></social-sharing-icons>
+                                <social-sharing-icons
+                                    network="facebook"
+                                    icon="facebook"
+                                    class="share-network facebook"
+                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
+                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    description="{{ wp_trim_words($listing->remarks, 20, '...') }}"
+                                ></social-sharing-icons>
+                                <social-sharing-icons
+                                    network="linkedin"
+                                    icon="linkedin"
+                                    class="share-network linkedin"
+                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
+                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                ></social-sharing-icons>
+                                <social-sharing-icons
+                                    network="pinterest"
+                                    icon="pinterest"
+                                    class="share-network pinterest"
+                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
+                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    media="{{ $listing->media_objects->data[0]->url }}"
+                                ></social-sharing-icons>
+                                <social-sharing-icons
+                                    network="twitter"
+                                    icon="twitter"
+                                    class="share-network twitter"
+                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
+                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                ></social-sharing-icons>
+                                </div>
                             </div>
                         </div>
 
@@ -76,8 +112,4 @@
                 </article>
             </div>
         </main>
-    @endwhile
-@else
-    @include('pages.404')
-@endif
 @endsection

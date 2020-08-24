@@ -86,7 +86,8 @@ class KMASliderModule
         register_rest_route( 'kerigansolutions/v1', '/slider',
             [
                 'methods'         => 'GET',
-                'callback'        => [ $this, 'getSlides' ]
+                'callback'        => [ $this, 'getSlides' ],
+                'permission_callback' => '__return_true'
             ]
         );
     }

@@ -27,7 +27,7 @@ class ThemeControl
         //include required files
         require template_path('includes/plugins/plate.php');
         require template_path('includes/plugins/theme-setup.php');
-        require template_path('includes/plugins/branded-login.php');
+        // require template_path('includes/plugins/branded-login.php');
         require template_path('includes/plugins/editor-filters.php');
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
@@ -52,6 +52,8 @@ class ThemeControl
         new KeriganSolutions\KMARealtor\RealtorListings();
         (new KeriganSolutions\KMARealtor\FeaturedListings())->use();
         (new KeriganSolutions\KMARealtor\Listing())->use();
+        (new KeriganSolutions\KMARealtor\CustomSearch())->use();
+        
         $this->enableContactInfo();
         
         if (get_theme_mod('enable_team')){
@@ -80,7 +82,7 @@ class ThemeControl
             '<div class="team-grid">
                 <div class="row justify-content-center">';
         
-            $team = new Team();
+            $team = new KeriganSolutions\KMATeam\Team();
             $members = $team->queryTeam();
         
             foreach($members as $member){

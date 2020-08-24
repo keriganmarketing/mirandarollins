@@ -12,15 +12,21 @@ class Listing extends Mothership
     public function use()
     {
         $this->slug = 'listing';
-        add_filter('the_posts',array($this,'createTemplate'));
+        add_action( 'init', [$this,'addRewriteRule'] );
+        add_filter( 'query_vars', [$this, 'addQueryVar'] );
+        add_filter( 'template_include', [$this,'loadTemplate'] ) ;
+
+        $this->setHooks();
     }
 
     public function get()
     {
-        if($this->getMlsNumber()){
-            $this->listing = $this->getListing();
+        if( $this->mlsIsGood() ){  
+            $this->listing = $this->getListing();  
+            return $this->listing;
         }
-        return $this->listing;
+
+        return false;
     }
     
     public function set($mlsNumber)
@@ -28,53 +34,43 @@ class Listing extends Mothership
         $this->mlsNumber = $mlsNumber;
     }
 
-    public function getMlsNumber()
+    public function setHooks()
     {
-        $pathFragments = explode('listing/',$_SERVER['REQUEST_URI']);
-        $this->mlsNumber = str_replace('/','',end($pathFragments));
+        add_action( 'rest_api_init', [$this, 'setEndpoints']);
+    }
 
-        if(strlen($this->mlsNumber) > 3 && is_numeric($this->mlsNumber)){
+    public function mlsIsGood()
+    {
+        $pathFragments = explode('listing/', $_SERVER['REQUEST_URI']);
+        $this->mlsNumber = str_replace('/','',end($pathFragments));
+        
+        if(strlen($this->mlsNumber) > 3 && is_numeric($this->mlsNumber)){            
             return true;
         }
 
         return false;
     }
 
-    public function createTemplate($posts)
+    public function addRewriteRule()
     {
-        global $wp,$wp_query;
+        add_rewrite_rule(
+            '^listing/([0-9]+)/?',
+            'index.php?mls=$matches[1]'
+        );
+    }
 
-        //check if user is requesting our listings page
-        if($this->getMlsNumber()){
+    public function addQueryVar($query_vars)
+    {
+        $query_vars[] = 'mls';
+        return $query_vars;
+    }
 
-            $this->getListing();
-
-            $post = new \stdClass;
-            $post->post_author = 1;
-            $post->post_name = $this->slug;
-            $post->guid = get_bloginfo($this->slug);
-            $post->post_title = $this->listing->full_address;
-            $post->post_content = null;
-            $post->ID = -42;
-            $post->post_status = 'static';
-            $post->comment_status = 'closed';
-            $post->ping_status = 'closed';
-            $post->comment_count = 0;
-            $post->post_date = current_time('mysql');
-            $post->post_date_gmt = current_time('mysql',1);
-            $posts = NULL;
-            $posts[] = $post;
-            $wp_query->is_page = true;
-            $wp_query->is_singular = true;
-            $wp_query->is_home = false;
-            $wp_query->is_archive = false;
-            $wp_query->is_category = false;
-            unset($wp_query->query["error"]);
-            $wp_query->query_vars["error"]="";
-            $wp_query->is_404 = false;
+    public function loadTemplate($template)
+    {
+        if($this->mlsIsGood()){
+            $template = TEMPLATEPATH . '/page-listing.php';
         }
-
-        return $posts;
+        return $template;
     }
 
     public function getListing()
@@ -231,5 +227,25 @@ class Listing extends Mothership
             }
         }
 
+    }
+
+    public function setEndpoints()
+    {
+        register_rest_route( 'kerigansolutions/v1', '/listing', array(
+            'methods' => 'GET',
+            'callback' => [$this, 'getAPIListing'],
+            'permission_callback' => '__return_true'
+        ) );
+    }
+
+    public function getAPIListing($request)
+    {
+        $mlsNumber = ($request->get_param( 'mls' ) !== null ? $request->get_param( 'mls' ) : null);
+
+        if($mlsNumber){
+            $apiCall = parent::callApi('listing/' . $mlsNumber);
+            $data = json_decode($apiCall->getBody())->data;
+            return rest_ensure_response($data);
+        }
     }
 }
