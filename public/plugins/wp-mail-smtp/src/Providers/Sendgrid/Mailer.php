@@ -2,7 +2,6 @@
 
 namespace WPMailSMTP\Providers\Sendgrid;
 
-use WPMailSMTP\MailCatcherInterface;
 use WPMailSMTP\Providers\MailerAbstract;
 use WPMailSMTP\WP;
 
@@ -36,11 +35,11 @@ class Mailer extends MailerAbstract {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
+	 * @param \WPMailSMTP\MailCatcher $phpmailer
 	 */
 	public function __construct( $phpmailer ) {
 
-		// We want to prefill everything from MailCatcher class, which extends PHPMailer.
+		// We want to prefill everything from \WPMailSMTP\MailCatcher class, which extends \PHPMailer.
 		parent::__construct( $phpmailer );
 
 		$this->set_header( 'Authorization', 'Bearer ' . $this->options->get( $this->mailer, 'api_key' ) );

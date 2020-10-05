@@ -4,7 +4,7 @@ namespace WPMailSMTP\Providers;
 
 use WPMailSMTP\Conflicts;
 use WPMailSMTP\Debug;
-use WPMailSMTP\MailCatcherInterface;
+use WPMailSMTP\MailCatcher;
 use WPMailSMTP\Options;
 use WPMailSMTP\WP;
 
@@ -32,7 +32,7 @@ abstract class MailerAbstract implements MailerInterface {
 	/**
 	 * @since 1.0.0
 	 *
-	 * @var MailCatcherInterface
+	 * @var MailCatcher
 	 */
 	protected $phpmailer;
 	/**
@@ -74,9 +74,9 @@ abstract class MailerAbstract implements MailerInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
+	 * @param MailCatcher $phpmailer
 	 */
-	public function __construct( MailCatcherInterface $phpmailer ) {
+	public function __construct( MailCatcher $phpmailer ) {
 
 		$this->options = new Options();
 		$this->mailer  = $this->options->get( 'mail', 'mailer' );
@@ -94,12 +94,15 @@ abstract class MailerAbstract implements MailerInterface {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
+	 * @param MailCatcher $phpmailer
 	 */
 	public function process_phpmailer( $phpmailer ) {
 
-		// Make sure that we have access to PHPMailer class methods.
-		if ( ! wp_mail_smtp()->is_valid_phpmailer( $phpmailer ) ) {
+		// Make sure that we have access to MailCatcher class methods.
+		if (
+			! $phpmailer instanceof MailCatcher &&
+			! $phpmailer instanceof \PHPMailer
+		) {
 			return;
 		}
 
@@ -410,55 +413,5 @@ abstract class MailerAbstract implements MailerInterface {
 		}
 
 		return implode( '<br>', $smtp_text );
-	}
-
-	/**
-	 * Get the email addresses for the reply to email parameter.
-	 *
-	 * @deprecated 2.1.1
-	 *
-	 * @since 2.1.0
-	 * @since 2.1.1 Not used anymore.
-	 *
-	 * @return array
-	 */
-	public function get_reply_to_addresses() {
-
-		_deprecated_function( __CLASS__ . '::' . __METHOD__, '2.1.1 of WP Mail SMTP plugin' );
-
-		$reply_to = $this->phpmailer->getReplyToAddresses();
-
-		// Return the passed reply to addresses, if defined.
-		if ( ! empty( $reply_to ) ) {
-			return $reply_to;
-		}
-
-		// Return the default reply to addresses.
-		return apply_filters(
-			'wp_mail_smtp_providers_mailer_default_reply_to_addresses',
-			$this->default_reply_to_addresses()
-		);
-	}
-
-	/**
-	 * Get the default email addresses for the reply to email parameter.
-	 *
-	 * @deprecated 2.1.1
-	 *
-	 * @since 2.1.0
-	 * @since 2.1.1 Not used anymore.
-	 *
-	 * @return array
-	 */
-	public function default_reply_to_addresses() {
-
-		_deprecated_function( __CLASS__ . '::' . __METHOD__, '2.1.1 of WP Mail SMTP plugin' );
-
-		return [
-			$this->phpmailer->From => [
-				$this->phpmailer->From,
-				$this->phpmailer->FromName,
-			],
-		];
 	}
 }

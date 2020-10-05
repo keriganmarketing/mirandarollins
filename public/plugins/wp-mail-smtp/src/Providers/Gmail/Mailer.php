@@ -3,7 +3,7 @@
 namespace WPMailSMTP\Providers\Gmail;
 
 use WPMailSMTP\Debug;
-use WPMailSMTP\MailCatcherInterface;
+use WPMailSMTP\MailCatcher;
 use WPMailSMTP\Providers\MailerAbstract;
 
 /**
@@ -37,11 +37,10 @@ class Mailer extends MailerAbstract {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
+	 * @param \WPMailSMTP\MailCatcher $phpmailer
 	 */
 	public function __construct( $phpmailer ) {
-
-	    parent::__construct( $phpmailer );
+		parent::__construct( $phpmailer );
 
 		if ( ! $this->is_php_compatible() ) {
 			return;
@@ -53,12 +52,14 @@ class Mailer extends MailerAbstract {
 	 *
 	 * @since 1.2.0
 	 *
-	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
+	 * @param \WPMailSMTP\MailCatcher $phpmailer
 	 */
 	public function process_phpmailer( $phpmailer ) {
-
-	    // Make sure that we have access to PHPMailer class methods.
-		if ( ! wp_mail_smtp()->is_valid_phpmailer( $phpmailer ) ) {
+		// Make sure that we have access to MailCatcher class methods.
+		if (
+			! $phpmailer instanceof MailCatcher &&
+			! $phpmailer instanceof \PHPMailer
+		) {
 			return;
 		}
 
@@ -78,39 +79,39 @@ class Mailer extends MailerAbstract {
 		$auth    = new Auth();
 		$message = new \Google_Service_Gmail_Message();
 
-		// Set the authorized Gmail email address as the "from email" if the set email is not on the list of aliases.
-		$possible_from_emails = $auth->get_user_possible_send_from_addresses();
+		/*
+		 * Right now Gmail doesn't allow to redefine From and Sender email headers.
+		 * It always uses the email address that was used to connect to its API.
+		 * With code below we are making sure that Email Log archive and single Email Log
+		 * have the save value for From email header.
+		 */
+		$gmail_creds = $auth->get_user_info();
 
-		if ( ! in_array( $this->phpmailer->From, $possible_from_emails, true ) ) {
-			$user_info = $auth->get_user_info();
-
-			if ( ! empty( $user_info['email'] ) ) {
-				$this->phpmailer->From   = $user_info['email'];
-				$this->phpmailer->Sender = $user_info['email'];
-			}
+		if ( ! empty( $gmail_creds['email'] ) ) {
+			$this->phpmailer->From   = $gmail_creds['email'];
+			$this->phpmailer->Sender = $gmail_creds['email'];
 		}
 
+		// Get the raw MIME email using MailCatcher data.
+		// We need here to make base64URL-safe string.
+		$base64 = str_replace(
+			array( '+', '/', '=' ),
+			array( '-', '_', '' ),
+			base64_encode( $this->phpmailer->getSentMIMEMessage() )
+		);
+
+		$message->setRaw( $base64 );
+
+		$service = new \Google_Service_Gmail( $auth->get_client() );
+
 		try {
-			// Prepare a message for sending if any changes happened above.
-			$this->phpmailer->preSend();
-
-			// Get the raw MIME email using MailCatcher data. We need to make base64URL-safe string.
-			$base64 = str_replace(
-				[ '+', '/', '=' ],
-				[ '-', '_', '' ],
-				base64_encode( $this->phpmailer->getSentMIMEMessage() ) //phpcs:ignore
-			);
-
-			$message->setRaw( $base64 );
-
-			$service  = new \Google_Service_Gmail( $auth->get_client() );
 			$response = $service->users_messages->send( 'me', $message );
 
 			$this->process_response( $response );
 		} catch ( \Exception $e ) {
 			Debug::set(
 				'Mailer: Gmail' . "\r\n" .
-				$this->process_exception_message( $e->getMessage() )
+				$e->getMessage()
 			);
 
 			return;
@@ -123,7 +124,7 @@ class Mailer extends MailerAbstract {
 	 * @since 1.0.0
 	 * @since 1.5.0 Added action "wp_mail_smtp_providers_gmail_mailer_process_response" with $response.
 	 *
-	 * @param \Google_Service_Gmail_Message $response Instance of Gmail response.
+	 * @param \Google_Service_Gmail_Message $response
 	 */
 	protected function process_response( $response ) {
 
@@ -159,12 +160,7 @@ class Mailer extends MailerAbstract {
 	}
 
 	/**
-	 * This method is relevant to SMTP and Pepipost.
-	 * All other custom mailers should override it with own information.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @return string
+	 * @inheritdoc
 	 */
 	public function get_debug_info() {
 
@@ -204,11 +200,7 @@ class Mailer extends MailerAbstract {
 	}
 
 	/**
-	 * Whether the mailer has all its settings correctly set up and saved.
-	 *
-	 * @since 1.4.0
-	 *
-	 * @return bool
+	 * @inheritdoc
 	 */
 	public function is_mailer_complete() {
 
@@ -226,76 +218,5 @@ class Mailer extends MailerAbstract {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Process the exception message and append additional explanation to it.
-	 *
-	 * @since 2.1.0
-	 *
-	 * @param mixed $message A string or an object with strings.
-	 *
-	 * @return string
-	 */
-	protected function process_exception_message( $message ) {
-
-		// Transform the passed message to a string.
-		if ( ! is_string( $message ) ) {
-			$message = wp_json_encode( $message );
-		} else {
-			$message = wp_strip_all_tags( $message, false );
-		}
-
-		// Define known errors, that we will scan the message with.
-		$known_errors = array(
-			array(
-				'errors'      => array(
-					'invalid_grant',
-				),
-				'explanation' => esc_html__( 'Please re-grant Google app permissions!', 'wp-mail-smtp' ) . ' ' . PHP_EOL .
-					esc_html__( 'Go to WP Mail SMTP plugin settings page. Click the “Remove Connection” button.', 'wp-mail-smtp' ) . ' ' . PHP_EOL .
-					esc_html__( 'Then click the “Allow plugin to send emails using your Google account” button and re-enable access.', 'wp-mail-smtp' ),
-			),
-		);
-
-		// Check if we get a match and append the explanation to the original message.
-		foreach ( $known_errors as $error ) {
-			foreach ( $error['errors'] as $error_fragment ) {
-				if ( false !== strpos( $message, $error_fragment ) ) {
-					return $message . PHP_EOL . $error['explanation'];
-				}
-			}
-		}
-
-		// If we get no match we return the original message (as a string).
-		return $message;
-	}
-
-	/**
-	 * Get the default email addresses for the reply to email parameter.
-	 *
-	 * @deprecated 2.1.1
-	 *
-	 * @since 2.1.0
-	 * @since 2.1.1 Not used anymore.
-	 *
-	 * @return array
-	 */
-	public function default_reply_to_addresses() {
-
-		_deprecated_function( __CLASS__ . '::' . __METHOD__, '2.1.1 of WP Mail SMTP plugin' );
-
-		$gmail_creds = ( new Auth() )->get_user_info();
-
-		if ( empty( $gmail_creds['email'] ) ) {
-			return [];
-		}
-
-		return [
-			$gmail_creds['email'] => [
-				$gmail_creds['email'],
-				'',
-			],
-		];
 	}
 }

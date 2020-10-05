@@ -40,7 +40,7 @@
                                     class="share-network email"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
                                     title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
-                                    description="{{ $listing->remarks }}"
+                                    description="{{ wp_trim_words($listing->remarks, 20, '...') }}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="facebook"

@@ -2,8 +2,6 @@
 
 namespace WPMailSMTP\Admin;
 
-use WPMailSMTP\WP;
-
 /**
  * Class PageAbstract.
  *
@@ -25,7 +23,7 @@ abstract class PageAbstract implements PageInterface {
 			add_query_arg(
 				'tab',
 				$this->slug,
-				WP::admin_url( 'admin.php?page=' . Area::SLUG )
+				admin_url( 'admin.php?page=' . Area::SLUG )
 			)
 		);
 	}
