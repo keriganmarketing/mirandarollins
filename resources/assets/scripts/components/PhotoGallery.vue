@@ -88,7 +88,7 @@
                 this.hasVirtualTour = true;
             }
 
-            if(viewerState == true){
+            if(this.viewerState == true){
                 this.openViewer(0);
             }
             
