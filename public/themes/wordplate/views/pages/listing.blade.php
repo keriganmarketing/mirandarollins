@@ -38,39 +38,39 @@
                                     network="email"
                                     icon="envelope"
                                     class="share-network email"
-                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
-                                    description="{{ wp_trim_words($listing->remarks, 20, '...') }}"
+                                    url="{!! (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" !!}"
+                                    title="{!! $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state !!}"
+                                    description="{!! wp_trim_words($listing->remarks, 20, '...'git status) !!}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="facebook"
                                     icon="facebook"
                                     class="share-network facebook"
-                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
-                                    description="{{ wp_trim_words($listing->remarks, 20, '...') }}"
+                                    url="{!! (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" !!}"
+                                    title="{!! $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state !!}"
+                                    description="{!! wp_trim_words($listing->remarks, 20, '...') !!}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="linkedin"
                                     icon="linkedin"
                                     class="share-network linkedin"
-                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    url="{!! (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" !!}"
+                                    title="{!! $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state !!}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="pinterest"
                                     icon="pinterest"
                                     class="share-network pinterest"
-                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
-                                    media="{{ $listing->media_objects->data[0]->url }}"
+                                    url="{!! (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" !!}"
+                                    title="{!! $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state !!}"
+                                    media="{!! $listing->media_objects->data[0]->url !!}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="twitter"
                                     icon="twitter"
                                     class="share-network twitter"
-                                    url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    url="{!! (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" !!}"
+                                    title="{!! $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state !!}"
                                 ></social-sharing-icons>
                                 </div>
                             </div>
