@@ -1,7 +1,7 @@
 <template>
     <ul>
         <li v-for="(navitem, index) in mobileNavData" v-bind:key="index" class="nav-item" :class="{'dropdown': navitem.children.length > 0 }">
-            <a :href="navitem.url" :class="'nav-link'" :target="navitem.target" >{{ navitem.title }}</a>
+            <a :href="navitem.url" :class="'nav-link'" :target="navitem.target" v-html="navitem.title" ></a>
             <span class="nav-icon" v-if="navitem.children.length > 0" @click="toggleSubMenu(index)">
                 <i class="fa" :class="{
                     'fa-plus-circle': !navitem.subMenuOpen,
@@ -10,7 +10,7 @@
             </span>
             <div class="dropdown-menu" v-if="navitem.subMenuOpen" >
                 <li v-for="(child, i) in navitem.children" v-bind:key="i">
-                    <a :href="child.url" :class="'nav-link'" :target="child.target" >{{ child.title }}</a>
+                    <a :href="child.url" :class="'nav-link'" :target="child.target" v-html="child.title" ></a>
                 </li>
             </div>
         </li>
