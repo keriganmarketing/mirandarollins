@@ -296,8 +296,9 @@ main {
     background-color: $dark;
     background-size: cover;
     background-position: center;
-    min-height: 150px;
+    min-height: 200px;
     overflow: hidden; 
+    border-bottom: 5px solid $primary !important;
 
     .overlay {
         position: relative;
