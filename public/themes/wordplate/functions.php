@@ -85,7 +85,7 @@ function yoast_add_og_video() {
         //echo '<meta property="og:image" content="https://img.youtube.com/vi/'.$videoParts[3].'/maxresdefault.jpg" />', "\n";
     }
 }
-add_action( 'wpseo_opengraph', 'yoast_add_og_video', 10, 1 );
+add_action( 'wpseo_frontend_presenters', 'yoast_add_og_video', 10, 1 );
 
 add_filter('wpseo_opengraph_image', function () {
     if ( get_post_format() == 'video' ) {

@@ -5,18 +5,18 @@
 Homestead.json
 Homestead.yaml
 
-/node_modules
-/vendor
+node_modules
+vendor
 
-/public/languages
-/public/upgrade
-/public/uploads/.cache/*
-/public/uploads/
-/public/plugins/
+public/languages
+public/upgrade
+public/uploads/.cache/*
+public/uploads/
+public/plugins/
 !plugins/index.php
-/public/wflogs/
-/public/wordpress/
-/public/.user.ini
+public/wflogs/
+public/wordpress/
+public/.user.ini
 
 npm-debug.log
 package-lock.json

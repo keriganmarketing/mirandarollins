@@ -8,9 +8,6 @@
         <main role="main">
             <div class="container">
                 <article class="support">
-                    <header class="text-primary">
-                        <h1>{{ $headline != '' ? $headline : the_title() }}</h1>
-                    </header>
                     <div class="row">
                         <div class="col-md-4">
                             <img class="img-fluid" src="{{ $team['image']['url'] }}">
