@@ -96,7 +96,7 @@ add_filter('wpseo_opengraph_image', function () {
 
 //[quicksearch]
 function testimonial_func( $atts ){
-    $testimonials = (new KeriganSolutions\KMATestimonials\Testimonial)->queryTestimonials(false, -1, 'date', 'ASC', 100);
+    $testimonials = (new KeriganSolutions\KMATestimonials\Testimonial)->queryTestimonials(false, -1, 'date', 'DESC', 100);
 
     ob_start();
     ?>
